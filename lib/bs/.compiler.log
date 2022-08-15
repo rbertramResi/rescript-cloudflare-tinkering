@@ -1,0 +1,15 @@
+#Start(1660528920111)
+
+  Warning number 106
+  /Users/rob/code/tinker/my-app/src/index.res:15:1-17:2
+
+  13 │ })
+  14 │ 
+  15 │ Cloudflare.addEventListener("fetch", (. e) => {
+  16 │   let _ = e.respondWith(. router.handle(. e.request))
+  17 │ })
+  18 │ 
+
+  Unimplemented primitive used:addEventListener
+
+#Done(1660528920170)

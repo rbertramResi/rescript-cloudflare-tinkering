@@ -1,0 +1,14 @@
+rescript = 1
+rule cp
+  command = cp $i $out
+rule touch
+ command = touch $out
+o index.cmi : cp ../bs/src/index.cmi
+o index.cmj : cp ../bs/src/index.cmj
+o index.cmt : cp ../bs/src/index.cmt
+o index.res : cp ../../src/index.res
+o Cloudflare.cmi : cp ../bs/src/bindings/Cloudflare.cmi
+o Cloudflare.cmj : cp ../bs/src/bindings/Cloudflare.cmj
+o Cloudflare.cmt : cp ../bs/src/bindings/Cloudflare.cmt
+o Cloudflare.res : cp ../../src/bindings/Cloudflare.res
+build install.stamp : touch index.cmi index.cmj Cloudflare.cmi Cloudflare.cmj 

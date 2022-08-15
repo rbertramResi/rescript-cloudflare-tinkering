@@ -1,0 +1,24 @@
+{
+    "name": "{{ project-name }}",
+    "private": true,
+    "version": "1.0.0",
+    "description": "package for creating workers templates",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "format": "prettier --write '**/*.{js,css,json,md}'",
+        "re:build": "rescript",
+        "re:start": "rescript build -w"
+    },
+    "author": "{{ authors }}",
+    "license": "ISC",
+    "devDependencies": {
+        "prettier": "^1.17.0",
+        "rescript": "^9.1.4"
+    },
+    "dependencies": {
+        "@ryyppy/rescript-promise": "^2.1.0",
+        "itty-router": "^2.1.9",
+        "serverless-cloudflare-workers": "^1.2.0"
+    }
+}

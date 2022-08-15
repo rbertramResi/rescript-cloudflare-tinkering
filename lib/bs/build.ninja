@@ -1,0 +1,17 @@
+rescript = 1
+g_finger := /Users/rob/code/tinker/my-app/node_modules/@ryyppy/rescript-promise/lib/ocaml/install.stamp
+rule astj
+  command = /Users/rob/code/tinker/my-app/node_modules/.pnpm/rescript@9.1.4/node_modules/rescript/darwin/bsc.exe  -bs-v 9.1.4  -absname -bs-ast -o $out $i
+o src/index.ast : astj ../../src/index.res
+rule deps
+  command = /Users/rob/code/tinker/my-app/node_modules/.pnpm/rescript@9.1.4/node_modules/rescript/darwin/bsb_helper.exe -hash 74a03504395a36d925abf11d5e75fd25 $in
+  restat = 1
+o src/index.d : deps src/index.ast
+rule mij
+  command = /Users/rob/code/tinker/my-app/node_modules/.pnpm/rescript@9.1.4/node_modules/rescript/darwin/bsc.exe -I src/bindings -I src -I /Users/rob/code/tinker/my-app/node_modules/@ryyppy/rescript-promise/lib/ocaml   -bs-package-name your-project-name -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/index.cmj src/index.cmi ../../src/index.bs.js : mij src/index.ast
+o src/bindings/Cloudflare.ast : astj ../../src/bindings/Cloudflare.res
+o src/bindings/Cloudflare.d : deps src/bindings/Cloudflare.ast
+o src/bindings/Cloudflare.cmj src/bindings/Cloudflare.cmi ../../src/bindings/Cloudflare.bs.js : mij src/bindings/Cloudflare.ast
